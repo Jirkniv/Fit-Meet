@@ -105,17 +105,7 @@ O **Fitmeet** é uma plataforma que promove um estilo de vida saudável e colabo
 
 ---
 
-
-## ⚠️ Observações Importantes:
-###### 👾Estado geral do projeto
-O projeto foi desenvolvido com bastante dedicação e acredito ter conseguido entregar uma solução completa. Apesar de alguns erros e ajustes pontuais, todas as funcionalidades principais foram implementadas com sucesso. Pode ser que algumas abordagens não sejam as mais otimizadas, mas o funcionamento geral foi garantido.
-
-
-###### 🛑 Limitações
-Devido a limitações de hardware, desenvolvi o projeto diretamente no meu celular durante a maior parte do tempo. Somente ao final fiz ajustes para compatibilidade com o emulador. Como resultado, a base dos estilos foi pensada para a tela do meu aparelho, que é relativamente pequena — o que pode causar diferenças no espaçamento ou tamanho de alguns elementos em dispositivos maiores.
-
-
-###### 📁 Problemas com Caminho Muito Longo no Windows
+#### 📁 Problemas com Caminho Muito Longo no Windows
 - Dependendo do local onde você clonar o repositorio você pode acabar se deparando com o erro: 
  
  ```
@@ -127,19 +117,11 @@ safely placed under this directory. The build may not work correctly.
 - Resolva fazendo os seguintes passos:
 1. Mapeia o caminho longo como drive M:
 ```  
-subst M: "C:\SEU-PATH\Jober-Junior-de-Moura-Pinto\mobile"
+subst M: "C:\SEU-PATH\Fit-Meet\mobile"
 ```
   2. Agora abra o projeto a partir de M:
 ```
 cd M:
 ```
 3. Execute normalmente os comandos a partir desse novo caminho.
-
-❌ Bugs
-
-Possivelmente no primeiro login os tipos de atividades não irão aparecer e não será possivel fazer muita coisa, mas depois de explorar um pouco app ele aparece e as coisas voltam ao normal.
-
-Para que alguns botôes atualizem pode ser neçessario ir para outra pagina e voltar.
-
----
 

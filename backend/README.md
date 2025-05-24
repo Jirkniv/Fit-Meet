@@ -1,6 +1,6 @@
-# 🌟 **Projeto Backend - Sysmap** 🌟
+# 🌟 **Projeto Backend - Fit Meet** 🌟
 
-Este é o backend do projeto **Sysmap**, desenvolvido para gerenciar usuários, atividades e conquistas, utilizando boas práticas de desenvolvimento, tecnologias modernas e uma arquitetura bem estruturada.
+Este é o backend do projeto **Fit Meet**, desenvolvido para gerenciar usuários, atividades e conquistas, utilizando boas práticas de desenvolvimento, tecnologias modernas e uma arquitetura bem estruturada.
 
 ---
 

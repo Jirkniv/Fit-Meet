@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ee7dac24-4ee2-42f6-bac6-64327b309e2a" alt="Tela de Login" width="400" />
+  <img src="https://github.com/user-attachments/assets/ee7dac24-4ee2-42f6-bac6-64327b309e2a" alt="Imagem" width="400" />
 </p>
 
 
@@ -86,17 +86,6 @@ frontend/
 - Design adaptado para dispositivos móveis e desktops.
 - Componentes acessíveis e estilizados com TailwindCSS e Radix UI.
 
----
-## **Principais falhas e bugs do Projeto**
-- Quando dividi meu componente activiyModal, meu modal de checkIn parou de funcionar corretamente e não tive tempo de arrumar.
-- A parte do usuario poder editar suas prefencias eu fiz mas deixei comentada porque como foi algo que foi colocado no projeto apenas depois e não vi sendo informado, então só a mudança vi hoje. Eu a implementei mas começou a der um erro pois, o meu componente que atualiza o usuario também é o mesmo que o cria e faz login, e ao passar essa parte das prefencias para ele acabou que ele precisava do token no login quando não era possivel. Esse eu peço que relevem porque de fato foi uma mudança de ultima hora.
-- A responividade eu creio ter lidado bem, mas em alguns tamanho talvez possa ficar estranho.
-- Infelizmente o tratamento de erros e até de respostas positivas não fui algo que eu implementei muito detalhadamente.
-- Em alguns momentos pode ser que a pagina deva ser recarregada para que os compoenentes atualizem/apareçam (Em alguns modais, e talvez a home na primeira inicialização)
-- A falta de uma função para gerenciar melhor a necessidade do token. Dependendo dos casos pode ser necessario abrir o dev tols e CheCkar o localStorage
-
-  
-- Com certeza deve haver alguns outros bugs, mas esses são os principais que eu vi. No geral acredito ter entregado um projeto bem completo
 
 
 ## **Como Executar o Projeto** 🏃‍♂️
