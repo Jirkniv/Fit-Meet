@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+/* Aplica as propriedades de fonte ao html, body e contêiner root */
+html, body, #root {
+  font-family: var(--text-font-family);
+  font-size: var(--text-font-size);
+  font-weight: var(--text-font-weight);
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--text-font-family);
+  font-size: var(--text-font-size);
+  font-weight: var(--text-font-weight);
+
+
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+
+  
+  --primary-color-400: #00BC7D;
+  --primary-color-500: #00BC7D;
+  --primary-color-600: #009966;
+  --title-color: #171717;
+  --text-color: #404040;
+  --placeholder-color: #A1A1A1;
+  --danger-color: #E7000B;
+  --border-color: #E5E5E5;
+  --separator-color: #707070;
+  --focus-border-color: #D4D4D4;
+  --gradient-color: linear-gradient(
+    90deg,
+    var(--primary-color-500) 0%,
+    var(--primary-color-600) 100%
+  );
+
+  --text-font-family: "DM Sans", sans-serif;
+  --text-font-size: 1rem;
+  --text-font-weight: normal;
+  --text-line-height: 1.5rem;
+
+  --subTitle-font-family: "Bebas Neue", sans-serif;
+  --subTitle-font-size: 1.75rem;
+  --subTitle-font-weight: normal;
+  --subTitle-line-height: 2rem;
+
+ 
+  --title-font-family: "Bebas Neue", sans-serif;
+  --title-font-size: 2rem;
+  --title-font-weight: normal;
+  --title-line-height: 2.2rem;
+
+  --label-font-family: "DM Sans", sans-serif;
+  --label-font-size: 1rem;
+  --label-font-weight: semibold;
+  --label-line-height: 1.2rem;
+
+  --small-font-family: "DM Sans", sans-serif;
+  --small-font-size: 0.8rem;
+  --small-font-weight: normal;
+  --small-line-height: 1rem;
+
+  --textSm-font-family: "DM Sans", sans-serif;
+  --textSm-font-size: 0.8rem;
+  --textSm-font-weight: normal;
+  --textSm-line-height: 1.2rem;
+
+
+}
+
+.text-default {
+  font-family: var(--text-font-family);
+  font-size: var(--text-font-size);
+  line-height: var(--text-line-height);
+  color: var(--text-color)
+}
+
+.text-subtitle {
+  font-family: var(--subTitle-font-family);
+  font-size: var(--subTitle-font-size);
+  line-height: var(--subTitle-line-height);
+}
+
+.text-title {
+  font-family: var(--title-font-family);
+  font-size: var(--title-font-size);
+  color: var(--title-color)
+}
+
+.text-label {
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  line-height: var(--label-line-height);
+}
+
+.text-small {
+  font-family: var(--small-font-family);
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+}
+
+.text-sm-default {
+  font-family: var(--textSm-font-family);
+  font-size: var(--textSm-font-size);
+  line-height: var(--textSm-line-height);
+}
+
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model user {
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  cpf        String   @unique
+  password   String
+  avatar     String?
+  xp         Int    @default(0)
+  level      Int    @default(1)
+  deletedAt  DateTime?
+
+
+  preferences    Preferences[]
+  activities     Activities[]
+  ActivityParticipants ActivityParticipants[]
+  UserAchievements UserAchievements[]
+
+  @@map("Users")
+}
+
+
+model Achievements {
+  id        String @id @default(uuid())
+  name      String
+  criterion String
+
+  UserAchievements UserAchievements[]
+
+  @@map("Achievements")
+}
+
+model UserAchievements {
+  id             String @id @default(uuid())
+
+
+  userId         String
+  achievementId  String
+
+
+  user         user          @relation(fields: [userId], references: [id])
+  achievement Achievements   @relation(fields: [achievementId], references: [id])
+
+  @@map("UserAchievements")
+}
+
+model Preferences {
+  id     String @id @default(uuid())
+
+  
+  userId String
+  typeId String
+
+
+  user user @relation(fields: [userId], references: [id])
+  type ActivityTypes @relation(fields: [typeId], references: [id])
+
+  @@map("Preferences")
+}
+
+
+model ActivityTypes {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  image       String
+
+
+  Activities       Activities[]
+  Preferences      Preferences[]
+
+  @@map("ActivityTypes")
+}
+
+model Activities {
+  id                String   @id @default(uuid())
+  title             String
+  description       String
+  confirmationCode  String
+  image             String
+  scheduledDate     DateTime?
+  createdAt         DateTime @default(now())
+  deletedAt         DateTime?
+  completedAt       DateTime?
+  private           Boolean
+
+  creatorId         String
+  typeId            String
+
+  user  user            @relation(fields: [creatorId], references: [id])
+  type  ActivityTypes   @relation(fields: [typeId], references: [id])
+
+  ActivityParticipants ActivityParticipants[]
+  
+  ActivityAddresses ActivityAddresses? 
+
+  @@map("Activities")
+}
+
+
+model ActivityAddresses {
+  id         String  @id @default(uuid())
+  latitude   Float
+  longitude  Float
+
+  activityId String @unique
+
+  activity Activities @relation(fields: [activityId], references: [id], onDelete: Cascade )
+
+  @@map("ActivityAddresses")
+}
+
+model ActivityParticipants {
+  id          String   @id @default(uuid())
+  approved    Boolean 
+  confirmedAt DateTime?
+
+  activityId String
+  userId     String
+
+  activity Activities @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  user     user       @relation(fields: [userId], references: [id])
+
+  @@map("ActivityParticipants")
+}

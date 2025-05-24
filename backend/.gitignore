@@ -1,0 +1,21 @@
+
+
+node_modules/
+#.env
+
+dist/
+web-build/
+expo-env.d.ts
+
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo

@@ -1,0 +1,606 @@
+{
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Busca o usuário logado",
+        "description": "Retorna os dados do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "123e4567-e89b-12d3-a456-426614174000"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "John Doe"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "jhondoe@example.com"
+                    },
+                    "avatar": {
+                      "type": "string",
+                      "example": "https://example.com/avatar.jpg"
+                    },
+                    "level": {
+                      "type": "number",
+                      "example": 5
+                    },
+                    "xp": {
+                      "type": "number",
+                      "example": 1500
+                    }, 
+                    "achievements": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                         
+                          "name": {
+                            "type": "string",
+                            "example": "Conquista 1"
+                          },
+                          "criterium": {
+                            "type": "string",
+                            "example": "Descrição da conquista"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "example": {
+                        "error": "Autenticação necessária"
+                      }
+                    }
+                  }
+                },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Esta conta foi desativada e não pode ser utilizada."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Usuário não encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/preferences": {
+      "get": {
+        "summary": "Busca as preferências do usuário",
+        "description": "Retorna as preferências do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Preferências encontradas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "typeId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "123e4567-e89b-12d3-a456-426614174000"
+                      },
+                      "typeName": {
+                        "type": "string",
+                        "example": "Esportes"
+                      },
+                      "typeDescription": {
+                        "type": "string",
+                        "example": "Atividades relacionadas a esportes"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }, "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Autenticação necessária"
+                }
+              }
+            }
+          },
+    "403": {
+      "description": "Forbidden",
+      "content": {
+        "application/json": {
+          "example": {
+            "error": "Esta conta foi desativada e não pode ser utilizada."
+          }
+        }
+      }
+    },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/preferences/define": {
+      "post": {
+        "summary": "Define as preferências do usuário",
+        "description": "Atualiza as preferências do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "typeIds": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": ["123e4567-e89b-12d3-a456-426614174000", "123e4567-e89b-12d3-a456-426614174001"]
+                  }
+                },
+                "required": ["typeIds"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Preferências atualizadas com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Preferências atualizadas com sucesso"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "example": {
+                        "error": "Autenticação necessária"
+                      }
+                    }
+                  }
+                },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Esta conta foi desativada e não pode ser utilizada."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tipo de atividade inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Um ou mais IDs informados são inválidos"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/avatar": {
+      "put": {
+        "summary": "Atualiza o avatar do usuário",
+        "description": "Atualiza a imagem de perfil do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": ["avatar"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Avatar atualizado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "avatar": {
+                      "type": "string",
+                      "example": "https://example.com/avatar.jpg"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Arquivo inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "A imagem deve ser um arquivo PNG ou JPG"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "example": {
+                        "error": "Autenticação necessária"
+                      }
+                    }
+                  }
+                },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Esta conta foi desativada e não pode ser utilizada."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/update": {
+      "put": {
+        "summary": "Atualiza os dados do usuário",
+        "description": "Atualiza as informações do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "John Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "jhondoe@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário atualizado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Usuário atualizado com sucesso"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "123e4567-e89b-12d3-a456-426614174000"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "jhondoe@example.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Dados inválidos ou faltando"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "example": {
+                        "error": "Autenticação necessária"
+                      }
+                    }
+                  }
+                },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Esta conta foi desativada e não pode ser utilizada."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/deactivate": {
+      "delete": {
+        "summary": "Desativa a conta do usuário",
+        "description": "Desativa a conta do usuário logado",
+        "tags": ["User"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conta desativada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Conta desativada com sucesso"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                    "application/json": {
+                      "example": {
+                        "error": "Autenticação necessária"
+                      }
+                    }
+                  }
+                },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Esta conta foi desativada e não pode ser utilizada."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Usuário não encontrado"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro inesperado no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Erro inesperado"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } 
+}
