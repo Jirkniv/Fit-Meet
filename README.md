@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://asset.cloudinary.com/dvy2e8yoz/873d7af0dffbcdd824695774892d3822" alt="Imagem Fit Meet" width="400" />
+  <img src="https://res.cloudinary.com/dvy2e8yoz/image/upload/v1745734674/Logo_nidncp.png" alt="Imagem Fit Meet" width="400" />
 </p>
 
 Este projeto foi desenvolvido como parte do **Bootcamp Fullstack da SysMap**, com o objetivo de criar uma solução completa para conectar pessoas interessadas em atividades físicas e eventos esportivos. O sistema é dividido em três módulos: Web (Frontend), API (Backend) e Mobile (App), cada um com seu próprio README detalhado para informações específicas.
